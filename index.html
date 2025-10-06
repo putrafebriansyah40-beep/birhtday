@@ -1,370 +1,319 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday! 🎈</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday! 🎈</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-        }
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
 
-        /* ✨ Latar belakang bintang */
-        #star-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
+    /* 🌌 Latar belakang bintang */
+    #star-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
 
-        .star {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 2s infinite;
-            z-index: 0;
-        }
+    .star {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite;
+    }
 
-        .main-container {
-            text-align: center;
-            z-index: 10;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 100px;
-            padding: 20px;
-        }
+    .main-container {
+      text-align: center;
+      z-index: 10;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 100px;
+      padding: 20px;
+    }
 
-        .title {
-            font-size: 4em;
-            font-weight: bold;
-            background: linear-gradient(45deg, #ff6ec4, #7873f5, #4facfe);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(255, 110, 196, 0.5);
-            animation: titlePulse 2s ease-in-out infinite;
-        }
+    .title {
+      font-size: 4em;
+      font-weight: bold;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5, #4facfe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px rgba(255, 110, 196, 0.5);
+      animation: titlePulse 2s ease-in-out infinite;
+    }
 
-        .gift-section {
-            position: relative;
-            z-index: 5;
-        }
+    .gift-section { position: relative; z-index: 5; }
 
-        .gift-box {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 0 auto;
-            position: relative;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: transform 0.3s;
-            animation: float 3s ease-in-out infinite;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-        }
+    .gift-box {
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      margin: 0 auto;
+      position: relative;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      animation: float 3s ease-in-out infinite;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
 
-        .gift-box:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
+    .gift-box:hover { transform: scale(1.1) rotate(5deg); }
 
-        .gift-lid {
-            width: 220px;
-            height: 40px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            position: absolute;
-            top: -20px;
-            left: -10px;
-            border-radius: 10px;
-            transition: all 0.5s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
+    .gift-lid {
+      width: 220px;
+      height: 40px;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      position: absolute;
+      top: -20px;
+      left: -10px;
+      border-radius: 10px;
+      transition: all 0.5s;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
 
-        .gift-box.opened .gift-lid {
-            transform: translateY(-60px) rotateX(45deg);
-        }
+    .gift-box.opened .gift-lid {
+      transform: translateY(-60px) rotateX(45deg);
+    }
 
-        .ribbon-v {
-            width: 30px;
-            height: 200px;
-            background: #ffd700;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+    .ribbon-v {
+      width: 30px;
+      height: 200px;
+      background: #ffd700;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
 
-        .ribbon-h {
-            width: 200px;
-            height: 30px;
-            background: #ffd700;
-            position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-        }
+    .ribbon-h {
+      width: 200px;
+      height: 30px;
+      background: #ffd700;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
 
-        .bow {
-            width: 60px;
-            height: 60px;
-            background: #ffd700;
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 50%;
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.5);
-        }
+    .bow {
+      width: 60px;
+      height: 60px;
+      background: #ffd700;
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.5);
+    }
 
-        .bow::before,
-        .bow::after {
-            content: '';
-            width: 40px;
-            height: 40px;
-            background: #ffd700;
-            position: absolute;
-            border-radius: 50%;
-            top: 10px;
-        }
+    .bow::before,
+    .bow::after {
+      content: '';
+      width: 40px;
+      height: 40px;
+      background: #ffd700;
+      position: absolute;
+      border-radius: 50%;
+      top: 10px;
+    }
 
-        .bow::before {
-            left: -35px;
-        }
+    .bow::before { left: -35px; }
+    .bow::after { right: -35px; }
 
-        .bow::after {
-            right: -35px;
-        }
+    .surprise {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 200px;
+      height: 200px; 
+      border-radius: 20px;
+      opacity: 0;
+      transition: all 0.5s;
+      object-fit: cover;
+    }
 
-        .surprise {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            width: 200px;
-            height: 200px; 
-            border-radius: 20px;
-            opacity: 0;
-            transition: all 0.5s;
-            object-fit: cover;
-        }
+    .gift-box.opened .surprise {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+      animation: spin 1s ease-in-out;
+    }
 
-        .gift-box.opened .surprise {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-            animation: spin 1s ease-in-out;
-        }
+    .message-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 20px;
+      margin: 20px auto;
+      max-width: 500px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.5s;
+    }
 
-        .message-box {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
-            margin: 20px auto;
-            max-width: 500px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.5s;
-        }
+    .message-box.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        .message-box.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .message-text {
+      color: #fff;
+      font-size: 1.3em;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
 
-        .message-text {
-            color: #fff;
-            font-size: 1.3em;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
+    button {
+      padding: 15px 40px;
+      font-size: 1.2em;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(255, 110, 196, 0.4);
+      font-weight: bold;
+    }
 
-        button {
-            padding: 15px 40px;
-            font-size: 1.2em;
-            background: linear-gradient(45deg, #ff6ec4, #7873f5);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(255, 110, 196, 0.4);
-            font-weight: bold;
-        }
+    button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(255, 110, 196, 0.6);
+    }
 
-        button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 110, 196, 0.6);
-        }
+    /* Kembang api */
+    .firework {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: explode 1s ease-out forwards;
+      z-index: 9999;
+    }
 
-        /* 🌐 RESPONSIVE */
-        @media (max-width: 600px) {
-            .title {
-                font-size: 2em;
-            }
+    @keyframes explode {
+      0% { transform: translate(0, 0); opacity: 1; }
+      100% { transform: translate(var(--x), var(--y)); opacity: 0; }
+    }
 
-            .gift-box {
-                width: 150px;
-                height: 150px;
-            }
+    @keyframes titlePulse { 0%,100%{transform:scale(1);}50%{transform:scale(1.05);} }
+    @keyframes float {0%,100%{transform:translateY(0);}50%{transform:translateY(-20px);} }
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+      50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.2); }
+      100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
 
-            .gift-lid {
-                width: 170px;
-                height: 35px;
-                left: -10px;
-            }
-
-            .surprise {
-                width: 150px;
-                height: 150px;
-            }
-
-            .message-text {
-                font-size: 1em;
-            }
-
-            button {
-                padding: 10px 25px;
-                font-size: 1em;
-            }
-
-            .main-container {
-                gap: 50px;
-            }
-        }
-
-        @keyframes titlePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes spin {
-            0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-            50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.2); }
-            100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
-        }
-
-        @keyframes explode {
-            0% { transform: translate(0, 0); opacity: 1; }
-            100% { transform: translate(var(--x), var(--y)); opacity: 0; }
-        }
-    </style>
+  </style>
 </head>
 <body>
-    <div id="star-container"></div>
+  <div id="star-container"></div>
 
-    <div class="main-container">
-        <h1 class="title">🎉 HAPPY BIRTHDAY ZAHWA 🎉</h1>
-        <div class="gift-section">
-            <div class="gift-box" id="giftBox" onclick="openGift()">
-                <div class="gift-lid"><div class="bow"></div></div>
-                <div class="ribbon-v"></div>
-                <div class="ribbon-h"></div>
-                <img class="surprise" src="gambar5.jpg" alt="" />
-            </div>
-        </div>
+  <div class="main-container">
+    <h1 class="title">🎉 HAPPY BIRTHDAY ZAHWA 🎉</h1>
 
-        <div class="message-box" id="messageBox">
-            <p class="message-text">
-                Cie udah kepala 2 nih<br>
-                Semoga setelah memasuki umur 20<br>
-                Tengilnya udah hilang yah<br>
-                and semoga panjang umur dan sehat selalu
-            </p>
-            <button onclick="launchFireworks()">🎆 Pesta Kembang Api!</button>
-        </div>
+    <div class="gift-section">
+      <div class="gift-box" id="giftBox" onclick="openGift()">
+        <div class="gift-lid"><div class="bow"></div></div>
+        <div class="ribbon-v"></div>
+        <div class="ribbon-h"></div>
+        <img class="surprise" src="gambar5.jpg" alt="Surprise"/>
+      </div>
     </div>
 
-    <script>
-        let fireworksActive = false;
+    <div class="message-box" id="messageBox">
+      <p class="message-text">
+        Cie udah kepala 2 nih<br>
+        Semoga setelah memasuki umur 20<br>
+        Tengilnya udah hilang yah<br>
+        and semoga panjang umur dan sehat selalu
+      </p>
+      <button onclick="launchFireworks()">🎆 Pesta Kembang Api!</button>
+    </div>
+  </div>
 
-        function openGift() {
-            const giftBox = document.getElementById('giftBox');
-            const messageBox = document.getElementById('messageBox');
-            if (!giftBox.classList.contains('opened')) {
-                giftBox.classList.add('opened');
-                setTimeout(() => messageBox.classList.add('show'), 500);
-            }
+  <script>
+    function openGift() {
+      const giftBox = document.getElementById('giftBox');
+      const messageBox = document.getElementById('messageBox');
+      if (!giftBox.classList.contains('opened')) {
+        giftBox.classList.add('opened');
+        setTimeout(() => messageBox.classList.add('show'), 500);
+      }
+    }
+
+    function createStars() {
+      const starContainer = document.getElementById('star-container');
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 2 + 's';
+        starContainer.appendChild(star);
+      }
+    }
+
+    function launchFireworks() {
+      const colors = ['#ff6ec4', '#7873f5', '#4facfe', '#ffd700', '#00f2fe', '#ff6b6b'];
+
+      function createFirework() {
+        const x = Math.random() * window.innerWidth;
+        const y = Math.random() * window.innerHeight * 0.5;
+        for (let i = 0; i < 30; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'firework';
+          particle.style.left = x + 'px';
+          particle.style.top = y + 'px';
+          particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+          const angle = (Math.PI * 2 * i) / 30;
+          const velocity = 100 + Math.random() * 100;
+          particle.style.setProperty('--x', Math.cos(angle) * velocity + 'px');
+          particle.style.setProperty('--y', Math.sin(angle) * velocity + 'px');
+
+          document.body.appendChild(particle);
+          setTimeout(() => particle.remove(), 1000);
         }
+      }
 
-        function createStars() {
-            const starContainer = document.getElementById('star-container');
-            for (let i = 0; i < 100; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 2 + 's';
-                starContainer.appendChild(star);
-            }
-        }
+      let count = 0;
+      const interval = setInterval(() => {
+        createFirework();
+        count++;
+        if (count >= 10) clearInterval(interval);
+      }, 400);
+    }
 
-        function launchFireworks() {
-            if (fireworksActive) return;
-            fireworksActive = true;
-
-            const colors = ['#ff6ec4', '#7873f5', '#4facfe', '#ffd700', '#00f2fe', '#ff6b6b'];
-
-            function createFirework() {
-                const x = Math.random() * window.innerWidth;
-                const y = Math.random() * window.innerHeight * 0.5;
-                for (let i = 0; i < 30; i++) {
-                    const particle = document.createElement('div');
-                    particle.className = 'firework';
-                    particle.style.left = x + 'px';
-                    particle.style.top = y + 'px';
-                    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-
-                    const angle = (Math.PI * 2 * i) / 30;
-                    const velocity = 100 + Math.random() * 100;
-                    particle.style.setProperty('--x', Math.cos(angle) * velocity + 'px');
-                    particle.style.setProperty('--y', Math.sin(angle) * velocity + 'px');
-
-                    document.body.appendChild(particle);
-                    setTimeout(() => particle.remove(), 1000);
-                }
-            }
-
-            let count = 0;
-            const interval = setInterval(() => {
-                createFirework();
-                count++;
-                if (count >= 10) {
-                    clearInterval(interval);
-                    fireworksActive = false;
-                }
-            }, 400);
-        }
-
-        createStars();
-    </script>
+    createStars();
+  </script>
 </body>
 </html>
